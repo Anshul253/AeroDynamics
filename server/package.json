@@ -1,0 +1,30 @@
+{
+  "name": "dynamic-pricing-server",
+  "version": "1.0.0",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js",
+    "seed": "node prisma/seed.js",
+    "migrate": "npx prisma migrate dev --name init",
+    "studio": "npx prisma studio"
+  },
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.22.0",
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "node-cache": "^5.1.2",
+    "socket.io": "^4.8.3",
+    "stripe": "^22.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "prisma": "^5.22.0"
+  }
+}

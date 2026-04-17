@@ -1,0 +1,13 @@
+node_modules/
+.env
+
+# MacOS
+.DS_Store
+
+# SQLite Database
+*.db
+*.db-journal
+
+# Build folders
+dist/
+build/
