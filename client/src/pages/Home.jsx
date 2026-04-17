@@ -19,7 +19,8 @@ export default function Home() {
         setLoading(false);
       });
 
-    const socket = io('http://localhost:5000');
+    const socketUrl = 'https://aerodynamics-backendv2.onrender.com';
+    const socket = io(socketUrl);
     socket.emit('join:catalog');
 
     socket.on('price:update', (data) => {
