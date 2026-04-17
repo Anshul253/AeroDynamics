@@ -14,7 +14,18 @@ const addressRoutes = require("./routes/address.routes");
 
 const app = express();
 
-app.use(cors({ origin: CLIENT_URL, credentials: true }));
+app.use(cors({
+  origin: function (origin, callback) {
+    // Allow requests with no origin (mobile apps, curl, etc.)
+    if (!origin) return callback(null, true);
+    // Case-insensitive comparison
+    if (origin.toLowerCase() === CLIENT_URL.toLowerCase()) {
+      return callback(null, true);
+    }
+    callback(new Error('Not allowed by CORS'));
+  },
+  credentials: true
+}));
 app.use(express.json());
 
 app.get("/api/health", (req, res) => {
