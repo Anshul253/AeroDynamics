@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import api from '../utils/api';
+import api, { assetUrl } from '../utils/api';
 import { Package, Clock, CheckCircle } from 'lucide-react';
 
 export default function Orders() {
@@ -50,7 +50,7 @@ export default function Orders() {
               {order.items.map(item => (
                 <div key={item.id} style={{ display: 'flex', gap: '1.5rem', margin: '1rem 0' }}>
                   <div style={{ width: '80px', height: '80px', borderRadius: '0.5rem', overflow: 'hidden', background: 'var(--surface-color)', flexShrink: 0 }}>
-                    <img src={item.product.imageUrl} alt={item.product.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                    <img src={assetUrl(item.product.imageUrl)} alt={item.product.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                   </div>
                   <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
                     <h4 style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '0.25rem' }}>{item.product.name}</h4>

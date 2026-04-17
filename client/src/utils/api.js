@@ -12,4 +12,13 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
+// Helper: converts DB image paths like "/drones/motor.png" to work on GitHub Pages
+export function assetUrl(path) {
+  if (!path) return '';
+  const base = import.meta.env.BASE_URL || '/';
+  // Remove leading slash from path to avoid double slashes
+  const clean = path.startsWith('/') ? path.slice(1) : path;
+  return base + clean;
+}
+
 export default api;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import api from '../utils/api';
+import api, { assetUrl } from '../utils/api';
 import { Trash2, ShoppingCart, Plus, MapPin } from 'lucide-react';
 
 export default function Cart() {
@@ -124,7 +124,7 @@ export default function Cart() {
             {items.map(item => (
               <div key={item.id} style={{ display: 'flex', gap: '1.5rem', paddingBottom: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
                 <div style={{ width: '100px', height: '100px', borderRadius: '0.5rem', overflow: 'hidden', background: 'var(--surface-color)', flexShrink: 0 }}>
-                  <img src={item.imageUrl} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                  <img src={assetUrl(item.imageUrl)} alt={item.name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                 </div>
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
                   <div style={{ display: 'flex', justifyContent: 'space-between' }}>

@@ -3,7 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid } from 'recharts';
 import { AuthContext } from '../context/AuthContext';
 import { ShoppingCart } from 'lucide-react';
-import api from '../utils/api';
+import api, { assetUrl } from '../utils/api';
 import { io } from 'socket.io-client';
 
 export default function ProductDetail() {
@@ -80,7 +80,7 @@ export default function ProductDetail() {
     <div>
       <div className="glass" style={{ borderRadius: '1rem', overflow: 'hidden', display: 'flex', flexWrap: 'wrap', marginBottom: '3rem' }}>
         <div style={{ flex: '1 1 400px', minHeight: '400px', background: 'var(--surface-color)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          <img src={product.imageUrl} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+          <img src={assetUrl(product.imageUrl)} alt={product.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
         </div>
         <div style={{ flex: '1 1 500px', padding: '2.5rem', display: 'flex', flexDirection: 'column' }}>
           <span style={{ color: 'var(--primary-color)', fontWeight: 600, fontSize: '0.875rem', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
@@ -156,7 +156,7 @@ export default function ProductDetail() {
             {recommendations.map(rec => (
               <div key={rec.id} onClick={() => navigate('/product/'+rec.id)} className="glass hover-lift" style={{ borderRadius: '0.75rem', cursor: 'pointer', overflow: 'hidden' }}>
                 <div style={{ height: '150px', background: 'var(--surface-color)' }}>
-                  <img src={rec.imageUrl} alt={rec.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
+                  <img src={assetUrl(rec.imageUrl)} alt={rec.name} style={{ width: '100%', height: '100%', objectFit: 'contain' }} />
                 </div>
                 <div style={{ padding: '1rem' }}>
                   <h4 style={{ fontWeight: 600, fontSize: '0.875rem', marginBottom: '0.25rem', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{rec.name}</h4>

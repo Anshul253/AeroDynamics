@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import api from '../utils/api';
+import api, { assetUrl } from '../utils/api';
 import { io } from 'socket.io-client';
 
 export default function Home() {
@@ -69,7 +69,7 @@ export default function Home() {
             transition: 'opacity 1s ease-in-out',
             display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', zIndex: idx === currentSlide ? 1 : 0
           }}>
-            <img src={slide.imageUrl} alt={slide.name} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: -2, filter: 'brightness(0.6)' }} />
+            <img src={assetUrl(slide.imageUrl)} alt={slide.name} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', objectFit: 'cover', zIndex: -2, filter: 'brightness(0.6)' }} />
             <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', background: 'linear-gradient(to top, rgba(11, 15, 25, 1) 0%, rgba(0,0,0,0) 30%)', zIndex: -1 }}></div>
             
             <div style={{ zIndex: 10, maxWidth: '800px', padding: '0 2rem', marginTop: '4rem' }}>
@@ -125,7 +125,7 @@ export default function Home() {
               border: '1px solid rgba(255,255,255,0.02)'
             }} className="product-tile hover-lift">
               <img 
-                src={product.imageUrl} 
+                src={assetUrl(product.imageUrl)} 
                 alt={product.name} 
                 style={{
                   position: 'absolute',

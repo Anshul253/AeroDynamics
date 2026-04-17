@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import api from '../utils/api';
+import api, { assetUrl } from '../utils/api';
 import { Package, Users, LayoutDashboard, Trash2, Plus, Edit, ClipboardList } from 'lucide-react';
 
 export default function Admin() {
@@ -153,7 +153,7 @@ export default function Admin() {
                   {products.map(p => (
                     <tr key={p.id} style={{ borderBottom: '1px solid rgba(0,0,0,0.05)' }}>
                       <td style={{ padding: '1rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
-                        <img src={p.imageUrl} alt={p.name} style={{ width: '40px', height: '40px', borderRadius: '0.5rem', objectFit: 'cover' }} />
+                        <img src={assetUrl(p.imageUrl)} alt={p.name} style={{ width: '40px', height: '40px', borderRadius: '0.5rem', objectFit: 'cover' }} />
                         <span style={{ fontWeight: 500 }}>{p.name}</span>
                       </td>
                       <td style={{ padding: '1rem' }}>₹{p.basePrice}</td>
